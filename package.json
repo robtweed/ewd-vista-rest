@@ -1,0 +1,28 @@
+{
+  "name": "ewd-vista-rest",
+  "description": "ewd-vista-rest: EWD.js REST interface for VistA: Master Process URL Interceptor",
+  "version": "0.1.0",
+  "author": {
+    "name": "Rob Tweed",
+    "email": "rtweed@mgateway.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/robtweed/ewd-vista-rest.git"
+  },
+  "os": [
+    "any"
+  ],
+  "directories": {
+    "lib": "./lib/"
+  },
+  "main": "./lib/ewd-vista-rest.js",
+  "engines": {
+    "node": ">=0.2.2"
+  },
+  "dependencies": {
+  },
+  "licenses": [
+    "Apache"
+  ]
+}
