@@ -21,8 +21,12 @@ var params = {
 
 ewdjs.start(params, function() {
   ewd.customObj = {
-    encryptAVCode: false,
-    handlerExtensionModule: 'myAddedHandlers'
+    encryptAVCode: false, // if true (default) then AVCode must be encrypted before use in login request
+    handlerExtensionModule: 'myAddedHandlers',  // custom extensions to RPC URL handlers & optional post-login processing
+    runRPC: {
+      REST: false, // if false, runRPC can't be directly invoked via REST requests (default true)
+      EWD: true    // if false, runRPC can't be directly invoked via EWD.js WebSocket messages (default true)
+    }
   };
   var ewdRest = require('ewd-vista-rest');
 });
