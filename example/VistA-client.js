@@ -5,10 +5,10 @@ var vistaSecurity = require('ewd-vista-security');
 //   Change to a valid Access Code / Verify Code for your system
 //    and modify the URL for your EWD.js system
 
-var ac = 'r0b-tweed';
-var vc = 'secret-1';
+var ac = 'worldvista6';
+var vc = '$#happy7';
 
-var baseUrl = 'http://192.168.1.196:8080/vista/';
+var baseUrl = 'http://192.168.1.154:8080/vista/';
 
 // *************************
 
@@ -18,20 +18,28 @@ function login(credentials, ac, vc) {
 
   authorization = credentials.Authorization;
   var url;
+  var form;
   if (credentials.key && credentials.iv) {
     var encrypted = vistaSecurity.avEncrypt(ac, vc, credentials.key, credentials.iv);
-    url = 'credentials=' + encrypted;
+    form = {
+      credentials: encrypted
+    };
   }
   else {
-    url = 'accessCode=' + ac + '&verifyCode=' + vc;
+    form = {
+      accessCode: ac,
+      verifyCode: vc
+    };
   }
   var options = {
-    url: baseUrl + 'login?' + url,
+    url: baseUrl + 'login',
+    method: 'POST',
     timeout: 5000,
     json: true,
     headers: {
-      Authorization: credentials.Authorization
-    }
+      Authorization: credentials.Authorization,
+    },
+    form: form
   };
   request(options, function (error, response, body) {
     if (error) {
